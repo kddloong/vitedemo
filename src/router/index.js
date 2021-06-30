@@ -3,7 +3,7 @@ import {createRouter, createWebHistory} from 'vue-router'
 
 
 const routes = [
-    {path: '/home', component: ()=>import('../components/home.vue'),   name: 'home'},
+    {path: '/home', component: () => import('../components/home.vue'), name: 'home'},
     // {path: '/home', component: () => import('../components/gallery'), name: 'gal'}
 ];
 
@@ -16,3 +16,5 @@ const router = createRouter({
 export {
     router
 } ;
+
+

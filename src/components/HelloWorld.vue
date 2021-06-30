@@ -1,14 +1,13 @@
 <template>
   <el-container>
-    <el-header>
-      <Header>
-
-      </Header>
-    </el-header>
+    <el-aside width="200px">
+      <Title></Title>
+      <Aside></Aside>
+    </el-aside>
     <el-container>
-      <el-aside width="200px">
-                <Aside></Aside>
-      </el-aside>
+      <el-header>
+        <Header></Header>
+      </el-header>
       <el-main>
         <Main></Main>
       </el-main>
@@ -20,9 +19,10 @@
 import Header from "../container/Header.vue";
 import Main from "../container/Main.vue";
 import Aside from "../container/Aside.vue";
+import Title from "../container/Title.vue";
 
 export default {
-  components: {Aside, Header, Main},
+  components: {Aside, Header, Main, Title},
   data() {
 
   }
@@ -38,7 +38,7 @@ export default {
 
 .el-aside {
   color: #333;
-  height: calc(100vh - 60px);
+  height: 100vh;
 }
 
 .el-main {
