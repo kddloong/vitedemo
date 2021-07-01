@@ -5,19 +5,16 @@
       <i class="el-icon-s-fold" @click="addTarget" v-show="!collapse"></i>
     </div>
     <div class="container__bread-crumb">
-      <el-breadcrumb separator="\">
-        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
-      </el-breadcrumb>
+      <breadcrumb></breadcrumb>
     </div>
   </div>
 </template>
 
 <script>
+import breadcrumb from "../components/breadcrumb.vue";
 export default {
   name: "Header",
+  components: {breadcrumb},
   data(){
     return{
       collapse: false
@@ -30,10 +27,7 @@ export default {
     }
   },
   watch:{
-    $route(to, from){
-      console.log(to);
-      console.log(from);
-    }
+
   }
 
 }
