@@ -1,11 +1,11 @@
 <template>
   <el-container>
-    <el-aside style="width: 200px">
+    <el-aside :style="widthStyle">
       <Title :collapse="collapse"></Title>
       <Aside :collapse="collapse"></Aside>
     </el-aside>
     <el-container>
-      <el-header>
+      <el-header style="padding: 0">
         <Header @add-target="addTarget()"></Header>
       </el-header>
       <el-main>
@@ -34,7 +34,7 @@ export default {
   },
   methods:{
     addTarget(){
-      this.collapse = true;
+      this.collapse = !this.collapse;
     },
     addAntiATarget(){
       this.collapse = false;
@@ -53,7 +53,7 @@ export default {
   watch: {
     collapse(newCollapse, oldCollapse){
       console.log(newCollapse);
-      console.log(oldCollapse);
+
       if(newCollapse){
         this.doCollapse();
       }else {
@@ -66,9 +66,10 @@ export default {
 
 <style>
 .el-header {
-  background-color: #B3C0D1;
+  background-color: #fff;
   color: #333;
   line-height: 60px;
+  padding: 0;
 }
 
 .el-aside {

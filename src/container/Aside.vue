@@ -1,39 +1,33 @@
 <template>
   <el-menu :default-openeds="['1', '3']" :collapse="collapse" router>
 
-
-
-    <el-submenu
-        :index="item.path"
-        v-for="item in DataList"
-
-    >
-      <template slot="title">
+    <template v-for="(item, index) in DataList">
+      <el-menu-item v-if="item.children.length === 0" :index="item.path">
         <i :class="item.icon"></i>
-        <span>{{ item.name }}</span>
-      </template>
-      <el-menu-item
-          :index="subItem.path"
-          v-for="subItem in item.children"
-      >
-        <i class="el-icon-menu"></i>
-        <span slot="title">{{ subItem.name }}</span>
+        <template #title>{{item.name}}</template>
       </el-menu-item>
-    </el-submenu>
-
-
-
+      <el-submenu v-else-if="item.children.length > 0" :index="index">
+        <template #title>
+          <i :class="item.icon"></i>
+          <span v-text="item.name"></span>
+        </template>
+        <el-menu-item v-for="subMenu in item.children" :index="subMenu.path">
+          <i :class="subMenu.icon"></i>
+          <span v-text="subMenu.name"></span>
+        </el-menu-item>
+      </el-submenu>
+    </template>
   </el-menu>
 </template>
 
 <script>
-import  {routes} from "../router";
+import {routes} from "../router";
 
 export default {
   name: "Aside",
   props: ['collapse'],
-  data(){
-    return{
+  data() {
+    return {
       DataList: routes
     }
   },

@@ -8,7 +8,8 @@ import {
     ElMenuItemGroup, ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,ElTable,
-    ElTableColumn,
+    ElTableColumn,ElBreadcrumb,
+    ElBreadcrumbItem,
 } from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css'
 
@@ -21,7 +22,8 @@ const components = [ElButton, ElSelect, ElAside, ElContainer, ElMain, ElHeader, 
     ElMenuItemGroup, ElSubmenu, ElDropdown,
     ElDropdownItem,
     ElDropdownMenu,ElTable,
-    ElTableColumn,];
+    ElTableColumn,ElBreadcrumb,
+    ElBreadcrumbItem];
 
 
 components.forEach(component => {

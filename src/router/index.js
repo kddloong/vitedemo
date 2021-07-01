@@ -23,7 +23,7 @@ const routes = [
       },
     ],
   },
-  // {path: '/home', component: () => import('../components/gallery'), name: 'gal'}
+  {path: '/home', component: () => import('../components/home.vue'), name: 'gal', children: []}
 ]
 
 const router = createRouter({
