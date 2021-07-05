@@ -3,9 +3,17 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
   {
+    path: '/',
+    component: () => import('../components/Dashboard/dashboard.vue'),
+    name: 'Dashboard',
+    icon: 'el-icon-picture',
+    children: [],
+  },
+
+  {
     path: '/home',
     component: () => import('../components/home.vue'),
-    name: 'home',
+    name: '家',
     icon: 'el-icon-message',
     children: [],
   },
@@ -23,7 +31,7 @@ const routes = [
       },
     ],
   },
-  {path: '/home', component: () => import('../components/home.vue'), name: 'gal', children: []}
+  { path: '/home', component: () => import('../components/home.vue'), name: 'gal', children: [] },
 ]
 
 const router = createRouter({

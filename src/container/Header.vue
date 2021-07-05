@@ -1,8 +1,7 @@
 <template>
   <div class="container">
     <div class="container__fold-icon">
-      <i class="el-icon-s-unfold" @click="addTarget" v-show="collapse"></i>
-      <i class="el-icon-s-fold" @click="addTarget" v-show="!collapse"></i>
+      <img src="../../public/unfold.svg" alt="" @click="addTarget" class="container__img" :class="collapse? '':'is-active'"/>
     </div>
     <div class="container__bread-crumb">
       <breadcrumb></breadcrumb>
@@ -52,8 +51,20 @@ export default {
   background-color: #eee;
 }
 
-[class^="el-icon-s-"]{
+.container__img{
+  margin: 14px;
+  width: 32px;
+  height: 32px;
   font-size: 2rem;
   line-height: 60px;
+  transform: rotate(0deg);
+  transition-duration: .2s;
 }
+
+
+.is-active{
+  transform: rotate(180deg);
+  transition-duration: .2s;
+}
+
 </style>

@@ -1,38 +1,39 @@
 <template>
   <el-breadcrumb separator="\">
-    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-    <el-breadcrumb-item v-for="item in routesList">
-      {{item.path}}
-    </el-breadcrumb-item>
+    <el-breadcrumb-item :to="{ path: '/' }">Dashboard</el-breadcrumb-item>
+    <transition name="el-fade-in-linear">
+      <template v-for="(item, index) in routesList" v-if="routesList.length > 0">
+        <template v-if="item.name !== 'Dashboard'">
+          <el-breadcrumb-item>{{ item.name }}</el-breadcrumb-item>
+        </template>
+      </template>
+    </transition>
   </el-breadcrumb>
 </template>
 
 <script>
 export default {
-  name: "breadcrumb",
+  name: 'breadcrumb',
   data() {
     return {
-      routesList: []
+      routesList: [],
     }
   },
   methods: {
-    getRoutesList(array){
-      console.log(typeof array);
-      console.log(array);
-      console.log(this.routesList);
-      console.log(`123`);
-    }
+    getRoutesList(array) {
+      this.routesList = array.matched
+    },
   },
   watch: {
     $route(to, from) {
-      console.log(to);
-      this.getRoutesList(to);
-      console.log(from);
-    }
-  }
+      this.getRoutesList(to)
+    },
+  },
 }
 </script>
 
 <style scoped>
-
+.el-breadcrumb__item {
+  font-size: 0.875rem;
+}
 </style>
