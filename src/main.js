@@ -1,7 +1,8 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import './index.css'
-import { router } from './router/index'
+import { createApp } from 'vue';
+import App from './App.vue';
+import './index.css';
+import { router } from './router/index';
+import store from './store';
 import {
   ElButton,
   ElSelect,
@@ -24,12 +25,13 @@ import {
   ElRow,
   ElCol,
   ElCard,
-} from 'element-plus'
-import 'element-plus/lib/theme-chalk/index.css'
+  ElInput,
+} from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
 
-const app = createApp(App)
+const app = createApp(App);
 
-app.use(router)
+app.use(router);
 
 const components = [
   ElButton,
@@ -53,10 +55,13 @@ const components = [
   ElRow,
   ElCol,
   ElCard,
-]
+  ElInput,
+];
 
 components.forEach(component => {
-  app.component(component.name, component)
-})
+  app.component(component.name, component);
+});
 
-app.mount('#app')
+app.use(store);
+
+app.mount('#app');

@@ -5,10 +5,10 @@
     </div>
     <div class="title__text" :style="displayNone">模板项目</div>
   </div>
-
-  <el-menu :default-openeds="['1', '3']" :collapse="collapse" router>
+<!-- -->
+  <el-menu :default-openeds="['1', '3']" :collapse="collapse"  @select="selectItem">
     <template v-for="(item, index) in DataList">
-      <el-menu-item v-if="item.children.length === 0" :index="item.path">
+      <el-menu-item v-if="item.children.length === 0" :index="{path:item.path,name: item.name}">
         <i :class="item.icon"></i>
         <template #title>{{ item.name }}</template>
       </el-menu-item>
@@ -17,7 +17,7 @@
           <i :class="item.icon"></i>
           <span v-text="item.name"></span>
         </template>
-        <el-menu-item v-for="subMenu in item.children" :index="subMenu.path">
+        <el-menu-item v-for="subMenu in item.children" :index="{path:`${item.path}/${subMenu.path}`,name:subMenu.name}" :route="item">
           <i :class="subMenu.icon"></i>
           <span v-text="subMenu.name"></span>
         </el-menu-item>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import {routes} from "../router";
+import {router, routes} from "../router";
 
 export default {
   name: "Aside",
@@ -40,7 +40,6 @@ export default {
   },
   created() {
 
-    console.log(this.DataList);
   },
   watch: {
     collapse(newCollapse, oldCollapse) {
@@ -61,6 +60,21 @@ export default {
       this.displayNone = {
         display: ''
       }
+    },
+    selectItem: function (index, indexPath){
+      let routeObj = {
+          type: true,
+          name: index.name,
+          closeAble: true
+      };
+
+      this.$store.commit('addPageList',routeObj);
+      console.log(index.path);
+      router.push(index.path);
+
+
+
+
     }
   }
 }

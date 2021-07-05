@@ -6,7 +6,9 @@
     <el-container>
       <el-header style="padding: 0">
         <Header @add-target="addTarget()"></Header>
+
       </el-header>
+      <pageContainer></pageContainer>
       <el-main>
         <Main></Main>
       </el-main>
@@ -18,9 +20,10 @@
 import Header from "../container/Header.vue";
 import Main from "../container/Main.vue";
 import Aside from "../container/Aside.vue";
+import pageContainer from '../container/page-container.vue';
 
 export default {
-  components: {Aside, Header, Main},
+  components: {Aside, Header, Main, pageContainer},
   data() {
     return {
       collapse: false,

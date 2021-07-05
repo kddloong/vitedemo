@@ -1,5 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
-// import Home from "../components/Home";
+import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
   {
@@ -13,30 +12,29 @@ const routes = [
   {
     path: '/home',
     component: () => import('../components/home.vue'),
-    name: '家',
-    icon: 'el-icon-message',
+    name: 'Home',
+    icon: 'el-icon-s-home',
     children: [],
   },
   {
     path: '/table',
     component: () => import('../components//table/Table.vue'),
-    name: 'table',
-    icon: 'el-icon-phone',
+    name: 'Table',
+    icon: 'el-icon-mobile-phone',
     children: [
       {
-        path: '/home1',
-        component: () => import('../components/home.vue'),
-        name: 'home1',
+        path: 'base-table',
+        component: () => import('../components/table/base-table.vue'),
+        name: 'BaseTable',
         icon: 'el-icon-message',
       },
     ],
   },
-  { path: '/home', component: () => import('../components/home.vue'), name: 'gal', children: [] },
-]
+];
 
 const router = createRouter({
   history: createWebHistory(),
   routes,
-})
+});
 
-export { router, routes }
+export { router, routes };
