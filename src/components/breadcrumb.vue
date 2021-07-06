@@ -1,14 +1,20 @@
 <template>
-  <el-breadcrumb separator="\">
-    <el-breadcrumb-item :to="{ path: '/' }">Dashboard</el-breadcrumb-item>
-    <transition name="el-fade-in-linear">
-      <template v-for="(item, index) in routesList" v-if="routesList.length > 0">
-        <template v-if="item.name !== 'Dashboard'">
-          <el-breadcrumb-item>{{ item.name }}</el-breadcrumb-item>
+  <div>
+    <el-breadcrumb separator="\">
+      <el-breadcrumb-item :to="{ path: '/' }">Dashboard</el-breadcrumb-item>
+      <transition name="el-fade-in-linear">
+        <!--      <div>-->
+        <template v-for="(item, index) in routesList" v-if="routesList.length > 0">
+          <template v-if="item.name !== 'Dashboard'">
+            <el-breadcrumb-item>{{ item.name }}</el-breadcrumb-item>
+          </template>
         </template>
-      </template>
-    </transition>
-  </el-breadcrumb>
+        <!--      </div>-->
+
+      </transition>
+    </el-breadcrumb>
+  </div>
+
 </template>
 
 <script>

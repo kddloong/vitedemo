@@ -71,17 +71,18 @@ export default {
 
 .el-aside {
   color: #333;
-  height: 100vh;
+  height: calc(100vh);
   width: 200px;
   transition: width .4s cubic-bezier(0.4, 0, 1, 1);
 }
 
 .el-main {
-  height: calc(100vh - 60px);
+  height: calc(100vh - 60px - 2em);
   padding: 0;
   width: 100%;
   background-color: hsl(0, 0%, 98%);
 }
+
 
 
 </style>

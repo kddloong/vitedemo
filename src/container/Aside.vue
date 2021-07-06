@@ -61,20 +61,16 @@ export default {
         display: ''
       }
     },
-    selectItem: function (index, indexPath){
+    selectItem: function (index){
       let routeObj = {
           type: true,
           name: index.name,
-          closeAble: true
+          closeAble: true,
+          url: index.path
       };
 
       this.$store.commit('addPageList',routeObj);
-      console.log(index.path);
       router.push(index.path);
-
-
-
-
     }
   }
 }

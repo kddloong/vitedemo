@@ -26,6 +26,10 @@ import {
   ElCol,
   ElCard,
   ElInput,
+  ElTag,
+  ElDrawer,
+  ElMessageBox,
+  ElMessage,
 } from 'element-plus';
 import 'element-plus/lib/theme-chalk/index.css';
 
@@ -56,12 +60,16 @@ const components = [
   ElCol,
   ElCard,
   ElInput,
+  ElTag,
+  ElDrawer,
+  ElMessageBox,
+  ElMessage,
 ];
 
 components.forEach(component => {
   app.component(component.name, component);
 });
-
+app.component(ElMessageBox.confirm, ElMessageBox);
 app.use(store);
 
 app.mount('#app');

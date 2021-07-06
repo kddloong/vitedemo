@@ -30,6 +30,13 @@ const routes = [
       },
     ],
   },
+  {
+    path: '/demo',
+    component: () => import('../components/Demo/demo-animation.vue'),
+    name: 'Demo-Animation',
+    icon: 'el-icon-picture-outline',
+    children: [],
+  },
 ];
 
 const router = createRouter({

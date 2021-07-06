@@ -10,13 +10,14 @@
     "element-plus": "^1.0.2-beta.53",
     "typescript": "^4.3.4",
     "vue": "^3.0.4",
-    "vue-router": "4"
+    "vue-router": "4",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue-jsx": "^1.1.6",
     "@typescript-eslint/eslint-plugin": "^4.28.1",
     "@typescript-eslint/parser": "^4.28.1",
     "@vitejs/plugin-vue": "^1.2.4",
+    "@vitejs/plugin-vue-jsx": "^1.1.6",
     "@vue/babel-plugin-jsx": "^1.0.6",
     "@vue/compiler-sfc": "^3.0.4",
     "@vue/eslint-config-prettier": "^6.0.0",

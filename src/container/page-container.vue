@@ -1,10 +1,16 @@
 <template>
 <div class="page-container">
-  <template v-for="(item,name,index) in pageList">
-{{item}}
-    {{name}}
-    <ElButton type="small">{{item[name]}}</ElButton>
-  </template>
+    <el-tag
+        v-for="tag in pageList"
+        :key="tag[1].name"
+        :closable="tag[1].closeAble"
+        @click="openPageBy(tag[1].url, tag[1])"
+        @close="closeTag(tag[0])"
+        size="medium"
+        :effect="tag[1].type ? 'dark': 'plain'"
+        >
+      {{tag[1].name}}
+    </el-tag>
 </div>
 </template>
 
@@ -23,19 +29,39 @@ export default {
     }
   },
   created() {
+  },
+  methods: {
+    openPageBy(url, tag){
+      this.$router.push(url);
+      this.$store.commit('addPageList', tag);
+    },
+    closeTag(key){
+      this.$store.commit('deletePageList', key)
+    }
   }
 }
 </script>
 
 <style scoped>
-.page-container .el-button{
-  position: relative;
-  padding-right: 17px;
+.page-container{
+  box-sizing: border-box;
+  padding-left: 1em;
+  padding-bottom: .3em;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  height: 2em;
 }
 
-.page-container .el-button::after{
-  content: "\2716";
-  position: absolute;
-  right: 3px;
+.el-tag{
+  cursor: pointer;
+  font-size: .9em;
 }
+
+.page-container .el-tag+ .el-tag{
+  margin-left: .5em;
+}
+
+
+
 </style>
