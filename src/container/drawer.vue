@@ -1,14 +1,12 @@
 <template>
-  <div class="drawer-button" :class="{'drawer-button--before_context': drawer}" @click="isOpen">
-    <i class="el-icon-setting"></i>
+  <div class="drawer-button" :class="{'drawer-button--before_context': drawer}" @click="drawer = !drawer">
+    <i :class="{'el-icon-setting':!drawer, 'el-icon-close': drawer}"></i>
   </div>
-  <div class="drawer-container" :class="{show: drawer}" id="drawer-container">
+  <div class="drawer-container" :class="{'drawer-container--show': drawer}" id="drawer-container" @click="clickAA">
 
-    <transition name="my-context">
-      <div class="drawer-container__context" v-if="drawer">
+      <div class="drawer-container__context" :class="{'drawer-container__context--drawer': drawer}">
 
       </div>
-    </transition>
 
   </div>
 
@@ -30,6 +28,14 @@ export default {
     },
     handleClose(done) {
       // this.drawer = false
+    },
+    clickAA(e){
+      console.log(e.target);
+      console.log(e.currentTarget)
+      console.log('123');
+    },
+    clickBB(e){
+      e.preventDefault();
     }
   }
 }
@@ -48,27 +54,18 @@ export default {
   height: 4rem;
   text-align: center;
   margin-top: -2rem;
+  z-index: 10;
+  transition: all .4s linear;
+}
 
+.drawer-button--before_context {
+  right: 20rem;
 }
 
 .drawer-button i {
   font-size: 3rem;
   line-height: 4rem;
 }
-
-.drawer-button--before_context{
-  right: 20rem;
-  transition: right .4s linear;
-}
-
-
-.show {
-  visibility: visible !important;
-  opacity: .4;
-  transition: opacity .4s linear;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
 
 .drawer-container {
   position: fixed;
@@ -77,17 +74,28 @@ export default {
   right: 0;
   bottom: 0;
   visibility: hidden;
+  opacity: 0;
+  transition: all .4s linear;
+  z-index: 1;
 }
 
+.drawer-container--show {
+  visibility: visible !important;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.4);
+}
 
 .drawer-container__context {
   position: fixed;
   right: 0;
   background-color: #fff;
   height: 100vh;
-  width: 20rem;
+  width: 0;
   transition: all .4s linear;
+  z-index: 100;
 }
 
-
+.drawer-container__context--drawer {
+  width: 20rem;
+}
 </style>
